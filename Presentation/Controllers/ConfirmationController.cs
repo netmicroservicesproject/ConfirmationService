@@ -36,7 +36,7 @@ namespace Presentation.Controllers {
             var client = _httpClientFactory.CreateClient();
 
             // Fetch all bookings from the Booking api
-            var bookingsResponse = await client.GetAsync("https://localhost:7235/api/booking");
+            var bookingsResponse = await client.GetAsync("https://microprojectbookings.azurewebsites.net/api/booking");
             if (!bookingsResponse.IsSuccessStatusCode) return NotFound("Failed to fetch bookings.");
 
             var bookings = await bookingsResponse.Content.ReadFromJsonAsync<List<BookingEntity>>();
