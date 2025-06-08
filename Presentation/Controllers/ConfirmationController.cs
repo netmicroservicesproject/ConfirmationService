@@ -57,7 +57,7 @@ namespace Presentation.Controllers {
 
             } else {
                 // Delete all bookings from the Booking project's API if bookings got confirmed.
-                var deletionResponse = await client.DeleteAsync("https://localhost:7235/api/booking");
+                var deletionResponse = await client.DeleteAsync("https://microprojectbookings.azurewebsites.net/api/booking");
                 return deletionResponse.IsSuccessStatusCode
                     ? Ok("Bookings confirmed and deleted.")
                     : BadRequest("Bookings confirmed but deletion failed.");
