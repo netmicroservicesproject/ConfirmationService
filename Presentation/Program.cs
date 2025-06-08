@@ -9,7 +9,13 @@ builder.Services.AddHttpClient();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<ConfirmationService>();
-builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("ConfirmationDatabaseConnection")));
+
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings-DefaultConnection2");
+
+builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(connectionString));
+
+
+//builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("ConfirmationDatabaseConnection")));
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowAll",
         policy => policy.AllowAnyOrigin()
